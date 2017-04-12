@@ -107,4 +107,50 @@ Public Class Form2
 
 
     End Sub
+
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        'code for searching
+
+
+        Dim dt As New DataTable
+        Dim da As New OleDbDataAdapter
+        Dim command As New OleDbCommand
+        command = New OleDbCommand("select * from details where roll=@roll", con)
+        command.Parameters.Add("@roll", OleDbType.Integer).Value = TextBox2.Text
+
+        da = New OleDbDataAdapter(command)
+
+        da.Fill(dt)
+        If dt.Rows.Count > 0 Then
+            TextBox1.Text = dt.Rows(0)(0)
+            TextBox2.Text = dt.Rows(0)(2)
+            TextBox3.Text = dt.Rows(0)(3)
+            If dt.Rows(0)(4).ToString = "Male" Then
+                RadioButton1.Checked = True
+            Else
+                RadioButton2.Checked = True
+            End If
+            If dt.Rows(0)(5).ToString = "B.Tech" Then
+                CheckBox1.Checked = True
+            Else
+                CheckBox2.Checked = True
+
+            End If
+            TextBox4.Text = dt.Rows(0)(6)
+
+
+
+
+            ' Dim bytes() As Byte = dt.Rows(0)(7)
+            'Dim img As Image = Image.FromStream(New System.IO.MemoryStream(bytes))
+            'PictureBox1.Image = img
+
+        Else
+            MsgBox("not found")
+
+
+
+        End If
+    End Sub
+
 End Class
