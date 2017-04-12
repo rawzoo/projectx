@@ -29,6 +29,16 @@ Public Class Form2
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         con.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Raju\Desktop\projectX\projectX\Resources\Database2.accdb"
         con.Open()
+        make()
+    End Sub
+    Private Sub make()
+        Dim dt As New DataTable
+        Dim da As New OleDbDataAdapter
+        da = New OleDbDataAdapter("select * from details", con)
+        da.Fill(dt)
+        DataGridView1.DataSource = dt.DefaultView
+
+
 
 
     End Sub
@@ -75,4 +85,6 @@ Public Class Form2
 
 
     End Sub
+
+
 End Class
