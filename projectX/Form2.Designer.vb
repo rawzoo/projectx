@@ -48,6 +48,7 @@ Partial Class Form2
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Button9 = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -221,7 +222,7 @@ Partial Class Form2
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(197, 265)
+        Me.Button3.Location = New System.Drawing.Point(323, 265)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(75, 23)
         Me.Button3.TabIndex = 19
@@ -230,20 +231,20 @@ Partial Class Form2
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(323, 265)
+        Me.Button4.Location = New System.Drawing.Point(382, 56)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
+        Me.Button4.Size = New System.Drawing.Size(109, 23)
         Me.Button4.TabIndex = 20
-        Me.Button4.Text = "SEARCH"
+        Me.Button4.Text = "SEARCH BY ROLL"
         Me.Button4.UseVisualStyleBackColor = True
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(197, 322)
+        Me.Button5.Location = New System.Drawing.Point(69, 306)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(75, 23)
         Me.Button5.TabIndex = 21
-        Me.Button5.Text = "Exit "
+        Me.Button5.Text = "EXIT"
         Me.Button5.UseVisualStyleBackColor = True
         '
         'Button6
@@ -257,7 +258,7 @@ Partial Class Form2
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(69, 322)
+        Me.Button7.Location = New System.Drawing.Point(197, 265)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(75, 23)
         Me.Button7.TabIndex = 23
@@ -266,7 +267,7 @@ Partial Class Form2
         '
         'Button8
         '
-        Me.Button8.Location = New System.Drawing.Point(323, 322)
+        Me.Button8.Location = New System.Drawing.Point(197, 306)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(75, 23)
         Me.Button8.TabIndex = 24
@@ -281,11 +282,21 @@ Partial Class Form2
         Me.DataGridView1.Size = New System.Drawing.Size(706, 150)
         Me.DataGridView1.TabIndex = 26
         '
+        'Button9
+        '
+        Me.Button9.Location = New System.Drawing.Point(323, 306)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(75, 23)
+        Me.Button9.TabIndex = 27
+        Me.Button9.Text = "REFRESH"
+        Me.Button9.UseVisualStyleBackColor = True
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(722, 534)
+        Me.Controls.Add(Me.Button9)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Button8)
         Me.Controls.Add(Me.Button7)
@@ -313,7 +324,7 @@ Partial Class Form2
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Name = "Form2"
-        Me.Text = "College"
+        Me.Text = "Student Details"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -346,4 +357,5 @@ Partial Class Form2
     Friend WithEvents Button7 As System.Windows.Forms.Button
     Friend WithEvents Button8 As System.Windows.Forms.Button
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents Button9 As System.Windows.Forms.Button
 End Class

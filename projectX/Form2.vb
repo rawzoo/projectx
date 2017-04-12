@@ -46,18 +46,17 @@ Public Class Form2
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         Dim command As New OleDbCommand
 
-        command = New OleDbCommand("insert into details(st_name,roll,gender,course,email,dob,college,pic)values(@st_name,@roll,@college,@gender,@course,@email,@dob,@pic)", con)
+        command = New OleDbCommand("insert into details(st_name,roll,college,gender,course,email)values(@st_name,@roll,@college,@gender,@course,@email)", con)
         command.Parameters.Add("@st_name", OleDbType.VarChar).Value = TextBox1.Text
+        command.Parameters.Add("@roll", OleDbType.Integer).Value = TextBox2.Text
+
 
         If RadioButton1.Checked = True Then
             command.Parameters.Add("@gender", OleDbType.VarChar).Value = "Male"
-        ElseIf RadioButton2.Checked = True Then
-            command.Parameters.Add("@gender", OleDbType.VarChar).Value = "Female"
-        Else
-            MsgBox("PLS Enter the gender")
         End If
-
-        command.Parameters.Add("@roll", OleDbType.Integer).Value = TextBox2.Text
+        If RadioButton2.Checked = True Then
+            command.Parameters.Add("@gender", OleDbType.VarChar).Value = "Female"
+        End If
 
         If CheckBox1.Checked = True Then
             command.Parameters.Add("@course", OleDbType.VarChar).Value = "B.Tech"
@@ -87,4 +86,25 @@ Public Class Form2
     End Sub
 
 
+    Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click
+        make()
+    End Sub
+
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+        con.Close()
+        Me.Hide()
+    End Sub
+
+    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
+        TextBox1.Text = ""
+        TextBox2.Text = ""
+        TextBox3.Text = ""
+        TextBox4.Text = ""
+        RadioButton1.Checked = False
+        RadioButton2.Checked = False
+        CheckBox1.Checked = False
+        CheckBox2.Checked = False
+
+
+    End Sub
 End Class

@@ -135,7 +135,7 @@ Partial Class Form4
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources._168794638_cropped_768x400
-        Me.ClientSize = New System.Drawing.Size(448, 333)
+        Me.ClientSize = New System.Drawing.Size(472, 333)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
