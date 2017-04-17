@@ -1,0 +1,82 @@
+Imports System.Data.OleDb
+Imports System.IO
+Public Class Form1
+    Dim con As New OleDbConnection
+    Dim ms As New System.IO.MemoryStream
+    Dim raju() As Byte
+
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Dim ofg As New OpenFileDialog
+        If ofg.ShowDialog = DialogResult.OK Then
+            PictureBox1.Image = Image.FromFile(ofg.FileName)
+
+
+        End If
+    End Sub
+
+    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        con.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\UEM\Documents\pic.accdb"
+        con.Open()
+    End Sub
+
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        Dim command As New OleDbCommand
+        command = New OleDbCommand("insert into table1(roll,st_name,pic)values(@roll,@st_name,@pic)", con)
+        command.Parameters.Add("@roll", OleDbType.Integer).Value = TextBox1.Text
+        command.Parameters.Add("@st_name", OleDbType.VarChar).Value = TextBox2.Text
+        PictureBox1.Image.Save(ms, PictureBox1.Image.RawFormat)
+        raju = ms.GetBuffer
+        command.Parameters.Add("@pic", OleDbType.Binary).Value = raju
+        If command.ExecuteNonQuery = 1 Then
+            MsgBox("Data saved")
+        Else
+            MsgBox("You Don't know anything")
+        End If
+    End Sub
+
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        TextBox1.Text = ""
+        TextBox2.Text = ""
+
+    End Sub
+
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+        con.Close()
+        Me.Close()
+    End Sub
+
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        Dim command As New OleDbCommand
+        Dim dt As New DataTable
+        Dim da As New OleDbDataAdapter
+        command = New OleDbCommand("select * from table1", con)
+        command.Parameters.Add("@roll", OleDbType.Integer).Value = TextBox1.Text
+        'data fill
+        da = New OleDbDataAdapter(command)
+        da.Fill(dt)
+        If dt.Rows.Count > 0 Then
+            TextBox2.Text = dt.Rows(0)(1)
+            raju = dt.Rows(0)(2)
+            PictureBox1.Image = Image.FromStream(New System.IO.MemoryStream(raju))
+        Else
+            MsgBox("sorry.....")
+
+        End If
+    End Sub
+
+    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+        Dim command As New OleDbCommand
+        command = New OleDbCommand("update table1 set roll=@roll,st_name=@st_name,pic=@pic where roll=@roll)", con)
+        command.Parameters.Add("@roll", OleDbType.Integer).Value = TextBox1.Text
+        command.Parameters.Add("@st_name", OleDbType.VarChar).Value = TextBox2.Text
+        PictureBox1.Image.Save(ms, PictureBox1.Image.RawFormat)
+        raju = ms.GetBuffer
+        command.Parameters.Add("@pic", OleDbType.Binary).Value = raju
+        If command.ExecuteNonQuery = 1 Then
+            MsgBox("Data updated")
+        Else
+            MsgBox("You really Don't know anything")
+        End If
+    End Sub
+End Class
